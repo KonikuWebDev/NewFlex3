@@ -1,0 +1,6 @@
+[P1,S1]=DIRXML_2_TABLES('TestData');
+PP=P1(:,:,3);%select plate number 3
+PL=[];
+label_well;%select the wells you want to label then press enter. Repeat if necessary.
+S=group_results(PP,PL)
+plotS(S,[1 3 2 5 4])%generate bar graphs with the bar in desired order
