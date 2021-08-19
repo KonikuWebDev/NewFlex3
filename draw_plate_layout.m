@@ -19,7 +19,6 @@ set(gca,'yticklabels',{'A','B','C','D','E','F','G','H'})
 for row=1:size(PL,1)
     for col=1:size(PL,2)
         if ~isempty(PL(row,col).label)
-            row,col
             text(col-0.9,row-0.5,PL(row,col).label)
         end
     end
