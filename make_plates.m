@@ -1,10 +1,3 @@
-%dirname='artifact_removal'
-%dirin='BAT_0122'
-%dirout='HL2'
-%[P1,S1]=DIRXML_2_TABLES(dirin);
-%close all
-%dirname='res_BAT3'
-%dirname='res_BAT5'
 plates=1:size(S1,1);
 Y=[];
 P=[];
@@ -15,11 +8,11 @@ for plate=plates
                 row
                 col
                 if ~isempty(S1(plate,row,col).F)
-                condition='AUC-';P(row,col,plate)=sum(S1(plate,row,col).F-S1(plate,row,col).F(1));
+               % condition='AUC-';P(row,col,plate)=sum(S1(plate,row,col).F-S1(plate,row,col).F(1));
                 
               %  condition='AUCCCNormal-';P(row,col,plate)=sum((S1(plate,row,col).F-S1(plate,row,col).F(1))./S2(plate,row,col).count);
                 
-              %  condition='AUCF0Normal-';P(row,col,plate)=sum((S1(plate,row,col).F-S1(plate,row,col).F(1))./(S1(plate,row,col).F(1)-15));
+                condition='AUCF0Normal-';P(row,col,plate)=sum((S1(plate,row,col).F-S1(plate,row,col).F(1))./(S1(plate,row,col).F(1)-15));
                 
               %  condition='Peak-';P(row,col,plate)=max(S1(plate,row,col).F-S1(plate,row,col).F(1));
                 
@@ -56,7 +49,7 @@ for plate=plates
        % lemax=max(max(P(:,1,plate)));
        % P(:,:,plate)=P(:,:,plate)/lemax;
         figure
-        imagesc(P(:,:,plate),[-0.5,1])
+        imagesc(P(:,:,plate))
         title([condition,S1(plate,1,1).platename])
        % saveas(gcf,[dirout,'/',dirin,condition,S1(plate,1,1).platename,'.png'])
        % csvwrite([dirout,'/',dirin,condition,S1(plate,1,1).platename,'.csv'],P(:,:,plate))  
