@@ -8,7 +8,7 @@ for k=1:length(S)
     lesmeans=[lesmeans,mean(S(k).D)];
     lesstds=[lesstds,std(S(k).D)];   
 end
-lesstds
+
 bar(lesmeans(order))
 hold on
 count=1;
@@ -19,18 +19,19 @@ for k=order
 end
 
 set(gca,'xticklabels',{[]})
+
 %set(gca,'XTickLabelRotation',45)
 
 
 
 count=1;
 for k=order
-    ypos =min(0,-lesstds(k)+lesmeans(k))-500;
+    ypos =min(0,-lesstds(k)+lesmeans(k))-2.5;
     text(count,ypos,leslabels{k},'rotation',0,'HorizontalAlignment', 'center','fontsize',10)
     count=count+1;
 end
 title('Response from samples')
 ylabel('Response amplitude (A.U.)','fontsize',12)
 %xlabel('log[Amphetamin] (g/mL)','position',[4,-5],'fontsize',12)
-%axis([0.5 length(order)+0.5 0 170])
+axis([0.5 length(order)+0.5 -5 1.1*max(lesmeans(order)+lesstds(order))])
 end
