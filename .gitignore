@@ -1,2 +1,4 @@
 .DS_Store
-Data/*
+Data/*.xml
+!Data/example.xml
+res_Data/*.png
