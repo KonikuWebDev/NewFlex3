@@ -2,6 +2,12 @@
 make_plates
 PP=P(:,:,3);%select plate number 3
 PL=[];
-label_well;%select the wells you want to label then press enter. Repeat if necessary.
+PL_OR=label_well(PL_OR)%select the wells you want to label then press enter. Repeat if necessary.
+PL_COMPOUND=label_well(PL_COMPOUND)
+PL_CONCENTRATION=label_well(PL_CONCENTRATION)
+UNIT=label_well(PL_UNIT)
+PL=groupPL(PL_OR,PL_COMPOUND)
+PL=groupPL(PL,PL_CONCENTRATION)
+PL=groupPL(PL,PL_UNIT)
 S=group_results(PP,PL)
 plotS(S,[1 3 2 5 4])%generate bar graphs with the bar in desired order

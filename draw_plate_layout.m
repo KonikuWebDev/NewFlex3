@@ -1,3 +1,4 @@
+function draw_plate_layout(PL)
 hold off
 plot([0,0],[0,8])
 hold on
@@ -19,9 +20,14 @@ set(gca,'yticklabels',{'A','B','C','D','E','F','G','H'})
 for row=1:size(PL,1)
     for col=1:size(PL,2)
         if ~isempty(PL(row,col).label)
-            text(col-0.9,row-0.5,PL(row,col).label)
+            if isnumeric(PL(row,col).label)
+            text(col-0.9,row-0.5,num2str(PL(row,col).label))
+            else
+               text(col-0.9,row-0.5,(PL(row,col).label)) 
+            end
         end
     end
+end
 end
     
     

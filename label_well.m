@@ -1,4 +1,5 @@
-draw_plate_layout
+function PL=label_well(PL)
+draw_plate_layout(PL)
 
 DD=ceil(ginput(2));
 colrange=DD(1,1):DD(2,1);
@@ -11,11 +12,10 @@ for col=colrange
 end
 for col=colrange
     for row=rowrange
-        
-        
-        PL(row,col).label=lelabel;
+        PL(row,col).label={lelabel};
     end
 end
 
-draw_plate_layout
+draw_plate_layout(PL)
+end
 

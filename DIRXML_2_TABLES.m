@@ -10,6 +10,13 @@ S2=[];
 
 files = dir([foldername,'/*.xml']);
 
+for i = 1:size(files,1)
+    if (strcmp(files(i).name,'example.xml'))
+        files(i)=[];
+    end
+end
+
+
 count=0;
 
 P=zeros(8,12);

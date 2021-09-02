@@ -3,23 +3,15 @@ Y=[];
 P=[];
 D=[];
 B=[];
-nB=10; %number of points in baseline
-PL=[];
-PL(8,12).label={''};
-PL_COMPOUND=PL;
-PL_CONCENTRATION=PL;
-PL_OR=PL;
-PL_UNIT=PL;
+nb=10; %number of points in baseline
 for plate=plates
     %if   strcmp(S1(plate,1,1).platename,S2(plate,1,1).platename)
         for row=1:size(S1(plate,:,:),2)
             for col=1:size(S1(plate,:,:),3)
-                             
-                if length(S1(plate,row,col).F)>1
+                D(row,col,plate)=sum((S1(plate,row,col).F(nB:end)- B(row,col,plate));
+                B(row,col,plate)=mean(S1(plate,row,col).F(1:nB))
+                if ~isempty(S1(plate,row,col).F)
                     
-                B(row,col,plate)=mean(S1(plate,row,col).F(1:nB));
-                D(row,col,plate)=mean(S1(plate,row,col).F(nB:nB+30)- B(row,col,plate));
-     
                % condition='AUC-';P(row,col,plate)=sum(S1(plate,row,col).F-S1(plate,row,col).F(1));
                 
               %  condition='AUCCCNormal-';P(row,col,plate)=sum((S1(plate,row,col).F-S1(plate,row,col).F(1))./S2(plate,row,col).count);
